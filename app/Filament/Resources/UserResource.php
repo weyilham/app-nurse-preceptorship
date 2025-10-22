@@ -51,7 +51,11 @@ class UserResource extends Resource
                     'Laki-laki' => 'Laki-laki',
                     'Perempuan' => 'Perempuan',
                 ]),
-                TextInput::make('jabatan'),
+                Select::make('jabatan')->options([
+                    'Staff' => 'Staff Pelaksana',
+                    'Karu'  => 'Kepala Ruangan',
+                    'Percobaan'   => 'Masa Percobaan',
+                ]),
                 TextInput::make('department'),
                 DatePicker::make('tanggal_masuk'),
                 Select::make('status_kerja')->options([
