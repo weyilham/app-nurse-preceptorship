@@ -35,7 +35,7 @@
                             </div>
 
                             <div class="hero-buttons">
-                                <a href="#courses" class="btn btn-primary">Mulai Belajar</a>
+                                <a href="#featured-courses" class="btn btn-primary">Mulai Belajar</a>
                             </div>
 
                             <div class="hero-features">

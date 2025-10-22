@@ -1,7 +1,8 @@
 <nav id="navmenu" class="navmenu">
     <ul>
-        <li><a href="{{ url('/home') }}" class="active">Home</a></li>
-        <li><a href="{{ url('/module') }}">Module</a></li>
+        <li><a href="{{ url('/home') }}" class="{{ request()->is('home*') ? 'active' : '' }}">Home</a></li>
+        <li><a href="{{ url('/module') }}" class="{{ request()->is('module*') ? 'active' : '' }}">Module</a></li>
+
         <li><a href="{{ url('/evaluasi') }}">Evaluasi</a></li>
         <li><a href="{{ url('/diskusi') }}">Forum</a></li>
         <li><a href="{{ url('/profile') }}">Profile</a></li>

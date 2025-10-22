@@ -18,7 +18,7 @@
             @include('layouts.partials.navbar')
 
 
-            <form action="{{ route('filament.admin.auth.logout') }}" method="POST" class="d-inline">
+            <form action="{{ route('auth.logout') }}" method="POST" class="d-inline">
                 @csrf
                 <button type="submit" class="btn-getstarted">
                     <i class="bi bi-box-arrow-right"></i> Logout
