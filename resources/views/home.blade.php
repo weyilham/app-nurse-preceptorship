@@ -18,12 +18,12 @@
 
                             <div class="hero-stats">
                                 <div class="stat-item">
-                                    <span class="number purecounter" data-purecounter-start="0" data-purecounter-end="50000"
+                                    <span class="number purecounter" data-purecounter-start="0" data-purecounter-end="150"
                                         data-purecounter-duration="2"></span>
-                                    <span class="label">New Nurses</span>
+                                    <span class="label">Nurses</span>
                                 </div>
                                 <div class="stat-item">
-                                    <span class="number purecounter" data-purecounter-start="0" data-purecounter-end="1200"
+                                    <span class="number purecounter" data-purecounter-start="0" data-purecounter-end="125"
                                         data-purecounter-duration="2"></span>
                                     <span class="label">Certified Nurses</span>
                                 </div>
