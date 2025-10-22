@@ -6,6 +6,7 @@ use App\Filament\Resources\UserResource\Pages;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -63,6 +64,11 @@ class UserResource extends Resource
                     'Tetap'   => 'Tetap',
                     'Magang'  => 'Magang'
                 ]),
+
+                FileUpload::make('foto')
+                ->image()
+                ->directory('users-profile')
+                ->required(),
             ]);
     }
 

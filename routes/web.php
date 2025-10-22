@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ForumController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +16,9 @@ Route::middleware(['ceklogin'])->group(function () {
     Route::get('/module', [HomeController::class, 'module'])->name('module');
     Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
     Route::put('/user/update/{id}', [HomeController::class, 'update'])->name('user.update');
+    Route::get('/diskusi', [ForumController::class, 'diskusi'])->name('diskusi');
+    Route::get('/diskusi/show/{id}', [ForumController::class, 'showDiskusi'])->name('diskusi.show');
+    Route::post('/comment/store', [ForumController::class, 'storeComment'])->name('comment.store');
 
 
     // tambahkan semua page yang butuh login di sini

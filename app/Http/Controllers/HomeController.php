@@ -27,6 +27,8 @@ class HomeController extends Controller
         return view('profile', compact('user'));
     }
 
+    
+
     public function update(Request $request, $id)
     {
         $validated = $request->validate([

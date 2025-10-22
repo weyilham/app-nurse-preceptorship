@@ -167,7 +167,6 @@
 @endsection
 
 @push('scripts')
-    <script type="text/javascript" src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             var session = $('#session').data('id');
