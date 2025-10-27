@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\DetailEvaluasi;
 use App\Models\EvaluasiKompetensi;
+use App\Models\KepuasanPerawat;
+use App\Models\KepuasanPerawatDetail;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -82,5 +84,52 @@ class EvaluasiController extends Controller
                 'data' => $kompetensi
             ]
         );
+    }
+
+
+    public function form()
+    {
+        $users = User::where('status_kerja', 'Magang')->where('role', 'user')->get();
+        $pernyataan = KepuasanPerawat::with('details')->get();
+
+        return view('evaluasi.form', compact('users', 'pernyataan'));
+    }
+
+    public function simpan(Request $request)
+    {
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+        ], [
+            'user_id.required' => 'Nama perawat wajib dipilih.',
+        ]);
+
+        dd($request->all());
+
+        foreach ($request->all() as $key => $value) {
+            if (str_starts_with($key, 'score')) {
+                $detailId = str_replace('score', '', $key);
+
+                // cek apakah sudah ada data sebelumnya
+                $detail = KepuasanPerawatDetail::where('kepuasan_perawat_id', $detailId)
+                    ->where('user_id', $request->user_id)
+                    ->first();
+
+                if ($detail) {
+                    // ✅ jika sudah ada → update
+                    $detail->update([
+                        'score' => $value,
+                    ]);
+                } else {
+                    // ✅ jika belum ada → insert
+                    KepuasanPerawatDetail::create([
+                        'kepuasan_perawat_id' => $detailId,
+                        'user_id' => $request->user_id,
+                        'score' => $value,
+                    ]);
+                }
+            }
+        }
+
+        return redirect()->back()->with('success', 'Penilaian berhasil disimpan.');
     }
 }

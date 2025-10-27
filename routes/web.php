@@ -26,6 +26,7 @@ Route::middleware(['ceklogin'])->group(function () {
 
     Route::get('/evaluasi/form', [EvaluasiController::class, 'form'])->name('evaluasi.form');
     Route::post('/penilaian/store', [EvaluasiController::class, 'store'])->name('penilaian.store');
+    Route::post('/penilaian/simpan', [EvaluasiController::class, 'simpan'])->name('penilaian.simpan');
 
 
 

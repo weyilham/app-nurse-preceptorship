@@ -57,7 +57,8 @@
                                 </p>
 
                                 <div class="action-buttons">
-                                    <a href="{{ route('evaluasi.form') }}" class="btn-view">Mulai Evaluasi</a>
+                                    <a href="{{ route('evaluasi.form') }}" class="btn-view " id="btn-evaluasi">Mulai
+                                        Evaluasi</a>
                                     <div class="social-links">
                                         <a href="#"><i class="bi bi-linkedin"></i></a>
                                         <a href="#"><i class="bi bi-twitter"></i></a>
@@ -73,3 +74,31 @@
         </section><!-- End Instructors Section -->
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            const status = "{{ Auth::user()->status_kerja }}";
+            const jabatan = "{{ Auth::user()->status_kerja }}";
+
+
+            $('#btn-evaluasi').on('click', function(e) {
+                if (status !== 'Magang') {
+                    e.preventDefault();
+                    // disabled true link action
+                    $(this).attr('disabled', true);
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Akses Ditolak',
+                        text: 'Hanya perawat dengan status Probation yang dapat mengisi evaluasi ini.',
+                        timer: 3000,
+                        timerProgressBar: true,
+                        showConfirmButton: false,
+                    });
+                }
+            });
+
+        });
+    </script>
+@endpush

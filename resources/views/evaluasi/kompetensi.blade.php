@@ -22,8 +22,8 @@
                         <div class="enrollment-form-wrapper">
 
                             <div class="enrollment-header text-center mb-5" data-aos="fade-up" data-aos-delay="200">
-                                <h2>Form Evaluasi Kepuasan Perawat Baru</h2>
-                                <p>Lengkapi Form Evaluasi Kepuasan Perawat Baru</p>
+                                <h2>Form Kopetensi Perawat Baru</h2>
+                                <p>Lengkapi Form Kompetensi Perawat Baru untuk meningkatkan kualitas pelayanan</p>
                             </div>
 
                             <form action="{{ route('penilaian.store') }}" method="POST">
@@ -49,9 +49,11 @@
                                     </div>
 
                                     {{-- button --}}
-                                    <div class="col-lg-6 mb-3 d-flex align-items-end">
-                                        <button type="submit" class="btn btn-primary w-100">Simpan Data</button>
-                                    </div>
+                                    @if (Auth::user()->jabatan == 'IT' || Auth::user()->jabatan == 'Karu')
+                                        <div class="col-lg-6 mb-3 d-flex align-items-end">
+                                            <button type="submit" class="btn btn-primary w-100">Simpan Data</button>
+                                        </div>
+                                    @endif
                                 </div>
 
                                 <table class="table table-bordered table-striped">
@@ -133,11 +135,17 @@
                                             alt="Instructor" class="img-fluid rounded-circle"
                                             style="width: 70px; height: 70px; object-fit: cover;">
                                     </div>
-                                    <div class="benefit-content">
-                                        <h5 class="mb-0" style="font-weight: 600; font-size: 16px;">{{ $user->name }}
-                                        </h5>
-                                        <p class="mb-0 text-muted" style="font-size: 13px;">{{ $user->email }}</p>
+                                    <div class="benefit-info ">
+                                        <div class="benefit-content ">
+                                            <h5 class="mb-0" style="font-weight: 600; font-size: 16px;">
+                                                {{ $user->name }}
+                                            </h5>
+                                            <p class="mb-0 text-muted" style="font-size: 13px;">
+                                                {{ 'Karyawan ' . $user->status_kerja }}</p>
+                                        </div>
+
                                     </div>
+
                                 </div>
                             @endforeach
                         </div>

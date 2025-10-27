@@ -23,13 +23,13 @@
                 <div class="col-lg-12">
                     <div class="instructor-hero-banner" data-aos="zoom-out" data-aos-delay="200">
                         <div class="hero-background">
-                            <img src="{{ isset($user->image) ? asset('storage/' . $user->image) : asset('assets/img/person/person-f-1.webp') }}"
+                            <img src="{{ isset($user->foto) ? asset('storage/' . $user->foto) : asset('assets/img/person/person-f-1.webp') }}"
                                 alt="Background" class="img-fluid">
                             <div class="hero-overlay"></div>
                         </div>
                         <div class="hero-content">
                             <div class="instructor-avatar">
-                                <img src="{{ isset($user->image) ? asset('storage/' . $user->image) : asset('assets/img/person/person-f-1.webp') }}"
+                                <img src="{{ isset($user->foto) ? asset('storage/' . $user->foto) : asset('assets/img/person/person-f-1.webp') }}"
                                     alt="Instructor" class="img-fluid">
                                 <div class="status-badge">
                                     <i class="bi bi-patch-check-fill"></i>

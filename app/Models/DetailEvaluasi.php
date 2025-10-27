@@ -13,4 +13,9 @@ class DetailEvaluasi extends Model
     {
         return $this->belongsTo(EvaluasiKompetensi::class, 'evaluasi_kompetensi_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

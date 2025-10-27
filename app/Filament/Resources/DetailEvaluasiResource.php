@@ -36,7 +36,7 @@ class DetailEvaluasiResource extends Resource
                 Tables\Columns\TextColumn::make('evaluasi_kompetensi.aspek'),
                 Tables\Columns\TextColumn::make('evaluasi_kompetensi.kriteria'),
                 Tables\Columns\TextColumn::make('skor'),
-                Tables\Columns\TextColumn::make('user.name'),
+                Tables\Columns\TextColumn::make('user.name')->label('Nama Perawat')->searchable(),
             ])
             ->filters([
                 //
@@ -71,4 +71,6 @@ class DetailEvaluasiResource extends Resource
     {
         return false;
     }
+
+    
 }
