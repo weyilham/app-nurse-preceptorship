@@ -1,3 +1,13 @@
+@push('styles')
+    <style type="text/css">
+        .active-card-user {
+            background-color: #d0e7ff !important;
+            border: 2px solid #007bff;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+            transition: 0.3s;
+        }
+    </style>
+@endpush
 @extends('layouts.main')
 @section('content')
     <div class="page-title light-background">
@@ -127,7 +137,7 @@
                             <h3 class="mb-4">Perawat Baru</h3>
 
                             @foreach ($users as $user)
-                                <div class="benefit-item d-flex align-items-center mb-3 p-2 rounded shadow-sm"
+                                <div class="benefit-item d-flex align-items-center mb-3 p-2 rounded shadow-sm selectUser cardUser{{ $user->id }}"
                                     style="background:#f0f8ff; cursor: pointer;" id="selectUser"
                                     data-idUser="{{ $user->id }}">
                                     <div class="benefit-image me-3">
@@ -184,8 +194,11 @@
                 $('#nama_perawat').val(idUser).trigger('change');
             })
 
-            $(document).on('change', '#nama_perawat', function(e) {
-                var idUser = $(this).val();
+            $(document).on('click', '[id^="selectUser"]', function() {
+                const idUser = $(this).data('iduser');
+                $('[id^="selectUser"]').removeClass('active-card-user');
+                $(this).addClass('active-card-user');
+
 
                 $.ajax({
                     type: 'GET',

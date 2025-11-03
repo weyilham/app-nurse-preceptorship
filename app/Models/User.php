@@ -54,9 +54,9 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class, 'user_id', 'id');
     }
 
-    public function kepuasan_perawats()
+    public function kepuasan_perawat()
     {
-        return $this->hasMany(KepuasanPerawat::class, 'user_id', 'id');
+        return $this->hasMany(KepuasanPerawatDetail::class, 'user_id', 'id');
     }
 
    

@@ -82,22 +82,22 @@
             const jabatan = "{{ Auth::user()->status_kerja }}";
 
 
-            $('#btn-evaluasi').on('click', function(e) {
-                if (status !== 'Magang') {
-                    e.preventDefault();
-                    // disabled true link action
-                    $(this).attr('disabled', true);
+            // $('#btn-evaluasi').on('click', function(e) {
+            //     if (status !== 'Magang') {
+            //         e.preventDefault();
+            //         // disabled true link action
+            //         $(this).attr('disabled', true);
 
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Akses Ditolak',
-                        text: 'Hanya perawat dengan status Probation yang dapat mengisi evaluasi ini.',
-                        timer: 3000,
-                        timerProgressBar: true,
-                        showConfirmButton: false,
-                    });
-                }
-            });
+            //         Swal.fire({
+            //             icon: 'error',
+            //             title: 'Akses Ditolak',
+            //             text: 'Hanya perawat dengan status Probation yang dapat mengisi evaluasi ini.',
+            //             timer: 3000,
+            //             timerProgressBar: true,
+            //             showConfirmButton: false,
+            //         });
+            //     }
+            // });
 
         });
     </script>

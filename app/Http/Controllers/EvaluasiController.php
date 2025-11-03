@@ -99,37 +99,49 @@ class EvaluasiController extends Controller
     {
         $request->validate([
             'user_id' => 'required|exists:users,id',
-        ], [
-            'user_id.required' => 'Nama perawat wajib dipilih.',
+            'score' => 'required|array',
+            'saran' => 'nullable|string',
         ]);
 
-        dd($request->all());
+        $userId = $request->user_id;
 
-        foreach ($request->all() as $key => $value) {
-            if (str_starts_with($key, 'score')) {
-                $detailId = str_replace('score', '', $key);
-
-                // cek apakah sudah ada data sebelumnya
-                $detail = KepuasanPerawatDetail::where('kepuasan_perawat_id', $detailId)
-                    ->where('user_id', $request->user_id)
-                    ->first();
-
-                if ($detail) {
-                    // ✅ jika sudah ada → update
-                    $detail->update([
-                        'score' => $value,
-                    ]);
-                } else {
-                    // ✅ jika belum ada → insert
-                    KepuasanPerawatDetail::create([
-                        'kepuasan_perawat_id' => $detailId,
-                        'user_id' => $request->user_id,
-                        'score' => $value,
-                    ]);
-                }
-            }
+        foreach ($request->score as $pertanyaanId => $nilai) {
+            KepuasanPerawatDetail::updateOrCreate(
+                [
+                    'user_id' => $userId,
+                    'kepuasan_perawat_id' => $pertanyaanId,
+                    'saran' => $request->saran
+                ],
+                [
+                    'score' => $nilai,
+                ],
+                
+            );
         }
 
+         
+
         return redirect()->back()->with('success', 'Penilaian berhasil disimpan.');
+    }
+
+    public function showFormPenilaian($id){
+        
+        $penilaikan = KepuasanPerawatDetail::with('kepuasan_perawat')->where('user_id', $id)->get();
+    
+        if($penilaikan->isEmpty()) {
+            return response()->json(
+                [
+                    'status' => false,
+                    'message' => 'Data tidak ditemukan'
+                ]
+            );
+        }
+        
+        return response()->json(
+            [
+                'status' => true,
+                'data' => $penilaikan
+            ]
+        );
     }
 }

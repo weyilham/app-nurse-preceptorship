@@ -58,7 +58,7 @@
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="hero-image">
                             <div class="main-image">
-                                <img src="assets/img/cover.jpg" alt="Online Learning" class="img-fluid">
+                                <img src="/assets/img/cover.jpg" alt="Online Learning" class="img-fluid">
                             </div>
 
                             <div class="floating-cards">
@@ -125,7 +125,7 @@
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="course-card">
                         <div class="course-image">
-                            <img src="assets/img/module.jpg" alt="Course" class="img-fluid">
+                            <img src="/assets/img/module.jpg" alt="Course" class="img-fluid">
                             <div class="badge featured">Module</div>
                             <div class="price-badge">E-Book</div>
                         </div>
@@ -162,7 +162,7 @@
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="course-card">
                         <div class="course-image">
-                            <img src="assets/img/evaluasi.jpg" alt="Course" class="img-fluid">
+                            <img src="/assets/img/evaluasi.jpg" alt="Course" class="img-fluid">
                             <div class="badge new">Evaluasi</div>
                             <div class="price-badge">Learning</div>
                         </div>
@@ -201,7 +201,7 @@
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
                     <div class="course-card">
                         <div class="course-image">
-                            <img src="assets/img/diskusi.jpg" alt="Course" class="img-fluid">
+                            <img src="/assets/img/diskusi.jpg" alt="Course" class="img-fluid">
                             <div class="badge certificate">Diskusi</div>
                             <div class="price-badge">Forum</div>
                         </div>
@@ -259,7 +259,7 @@
                     <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="instructor-card">
                             <div class="instructor-image">
-                                <img src="assets/img/education/teacher-2.webp" class="img-fluid" alt="">
+                                <img src="/assets/img/education/teacher-2.webp" class="img-fluid" alt="">
                                 <div class="overlay-content">
                                     <div class="rating-stars">
                                         <i class="bi bi-star-fill"></i>
@@ -304,7 +304,7 @@
                     <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
                         <div class="instructor-card">
                             <div class="instructor-image">
-                                <img src="assets/img/education/teacher-7.webp" class="img-fluid" alt="">
+                                <img src="/assets/img/education/teacher-7.webp" class="img-fluid" alt="">
                                 <div class="overlay-content">
                                     <div class="rating-stars">
                                         <i class="bi bi-star-fill"></i>
@@ -349,7 +349,7 @@
                     <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                         <div class="instructor-card">
                             <div class="instructor-image">
-                                <img src="assets/img/education/teacher-4.webp" class="img-fluid" alt="">
+                                <img src="/assets/img/education/teacher-4.webp" class="img-fluid" alt="">
                                 <div class="overlay-content">
                                     <div class="rating-stars">
                                         <i class="bi bi-star-fill"></i>
@@ -394,7 +394,7 @@
                     <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
                         <div class="instructor-card">
                             <div class="instructor-image">
-                                <img src="assets/img/education/teacher-9.webp" class="img-fluid" alt="">
+                                <img src="/assets/img/education/teacher-9.webp" class="img-fluid" alt="">
                                 <div class="overlay-content">
                                     <div class="rating-stars">
                                         <i class="bi bi-star-fill"></i>
@@ -568,7 +568,7 @@
                                             sehari-hari.
                                         </p>
                                         <div class="testimonial-profile">
-                                            <img src="assets/img/person/person-f-1.webp" alt="Reviewer"
+                                            <img src="/assets/img/person/person-f-1.webp" alt="Reviewer"
                                                 class="img-fluid rounded-circle">
                                             <div>
                                                 <h3>Siti Rahmawati</h3>
@@ -594,7 +594,7 @@
                                             preceptor.
                                         </p>
                                         <div class="testimonial-profile">
-                                            <img src="assets/img/person/person-m-2.webp" alt="Reviewer"
+                                            <img src="/assets/img/person/person-m-2.webp" alt="Reviewer"
                                                 class="img-fluid rounded-circle">
                                             <div>
                                                 <h3>Andi Pratama</h3>
@@ -619,7 +619,7 @@
                                             terutama terkait kasus keperawatan yang kompleks.
                                         </p>
                                         <div class="testimonial-profile">
-                                            <img src="assets/img/person/person-f-3.webp" alt="Reviewer"
+                                            <img src="/assets/img/person/person-f-3.webp" alt="Reviewer"
                                                 class="img-fluid rounded-circle">
                                             <div>
                                                 <h3>Nur Aisyah</h3>
@@ -644,7 +644,7 @@
                                             dengan jelas dan menilai kompetensi secara objektif.
                                         </p>
                                         <div class="testimonial-profile">
-                                            <img src="assets/img/person/person-m-4.webp" alt="Reviewer"
+                                            <img src="/assets/img/person/person-m-4.webp" alt="Reviewer"
                                                 class="img-fluid rounded-circle">
                                             <div>
                                                 <h3>Drs. Budi Santoso, M.Kep</h3>

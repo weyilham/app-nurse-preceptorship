@@ -1,3 +1,13 @@
+@push('styles')
+    <style type="text/css">
+        .active-card-user {
+            background-color: #d0e7ff !important;
+            border: 2px solid #007bff;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+            transition: 0.3s;
+        }
+    </style>
+@endpush
 @extends('layouts.main')
 @section('content')
     <div class="page-title light-background">
@@ -49,25 +59,25 @@
                                     </div>
 
                                     {{-- button --}}
-                                    {{-- @if (Auth::user()->jabatan == 'IT' || Auth::user()->jabatan == 'Karu') --}}
-                                    <div class="col-lg-6 mb-3 d-flex align-items-end">
-                                        <button type="submit" class="btn btn-primary w-100">Simpan Data</button>
-                                    </div>
-                                    {{-- @endif --}}
+                                    @if (Auth::user()->jabatan == 'IT' || Auth::user()->jabatan == 'Karu')
+                                        <div class="col-lg-6 mb-3 d-flex align-items-end">
+                                            <button type="submit" class="btn btn-primary w-100">Simpan Data</button>
+                                        </div>
+                                    @endif
                                 </div>
 
                                 <table class="table table-bordered table-striped">
                                     <thead class="text-center">
                                         <tr>
-                                            <th scope="col" rowspan="2">No</th>
-                                            <th scope="col" rowspan="2">Pernyataan</th>
-                                            <th scope="col" colspan="5">Skor</th>
+                                            <th rowspan="2">No</th>
+                                            <th rowspan="2">Pernyataan</th>
+                                            <th colspan="5">Skor</th>
                                         </tr>
                                         <tr>
-                                            <th scope="col">Sangat Tidak Baik</th>
-                                            <th scope="col">Tidak Baik</th>
-                                            <th scope="col">Cukup Baik</th>
-                                            <th scope="col">Baik</th>
+                                            <th>Sangat Tidak Baik</th>
+                                            <th>Tidak Baik</th>
+                                            <th>Cukup Baik</th>
+                                            <th>Baik</th>
                                             <th>Sangat Baik</th>
                                         </tr>
                                     </thead>
@@ -76,30 +86,19 @@
                                             <tr>
                                                 <td class="text-center align-middle">{{ $index + 1 }}</td>
                                                 <td class="align-middle">{{ $item->name }}</td>
-                                                <td class="text-center">
-                                                    <input type="radio" name="score{{ $index + 1 }}" value="1"
-                                                        {{ old('score' . ($index + 1)) == '1' ? 'checked' : '' }}>
-                                                </td>
-                                                <td class="text-center">
-                                                    <input type="radio" name="score{{ $index + 1 }}" value="2"
-                                                        {{ old('score' . ($index + 1)) == '2' ? 'checked' : '' }}>
-                                                </td>
-                                                <td class="text-center">
-                                                    <input type="radio" name="score{{ $index + 1 }}" value="3"
-                                                        {{ old('score' . ($index + 1)) == '3' ? 'checked' : '' }}>
-                                                </td>
-                                                <td class="text-center">
-                                                    <input type="radio" name="score{{ $index + 1 }}" value="4"
-                                                        {{ old('score' . ($index + 1)) == '4' ? 'checked' : '' }}>
-                                                </td>
-                                                <td class="text-center">
-                                                    <input type="radio" name="score{{ $index + 1 }}" value="5"
-                                                        {{ old('score' . ($index + 1)) == '5' ? 'checked' : '' }}>
-                                                </td>
+
+                                                @for ($i = 1; $i <= 5; $i++)
+                                                    <td class="text-center">
+                                                        <input type="radio" name="score[{{ $item->id }}]"
+                                                            value="{{ $i }}"
+                                                            {{ old('score.' . $item->id) == $i ? 'checked' : '' }} required>
+                                                    </td>
+                                                @endfor
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
+
 
                                 <div class="row">
                                     {{-- text area saran --}}
@@ -125,7 +124,7 @@
                             <h3 class="mb-4">Perawat Baru</h3>
 
                             @foreach ($users as $user)
-                                <div class="benefit-item d-flex align-items-center mb-3 p-2 rounded shadow-sm"
+                                <div class="benefit-item d-flex align-items-center mb-3 p-2 rounded shadow-sm selectUser cardUser{{ $user->id }}"
                                     style="background:#f0f8ff; cursor: pointer;" id="selectUser"
                                     data-idUser="{{ $user->id }}">
                                     <div class="benefit-image me-3">
@@ -159,3 +158,88 @@
         </section><!-- /Enroll Section -->
     </div>
 @endsection
+
+@push('scripts')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var session = $('#session').data('id');
+            if (session) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: session,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                });
+            }
+            $(document).on('click', '#selectUser', function(e) {
+                var idUser = $(this).data('iduser');
+                $('#nama_perawat').val(idUser).trigger('change');
+            })
+
+            // Event ketika card diklik
+            $(document).on('click', '[id^="selectUser"]', function() {
+                const idUser = $(this).data('iduser');
+
+                // Hapus kelas active dari semua card
+                $('[id^="selectUser"]').removeClass('active-card-user');
+
+                // Tambahkan kelas active pada card yang diklik
+                $(this).addClass('active-card-user');
+
+                // Jalankan AJAX untuk ambil data penilaian
+                $.ajax({
+                    type: 'GET',
+                    url: "{{ url('evaluasi/penilaian') }}/" + idUser,
+                    dataType: 'json',
+                    success: function(response) {
+                        console.log(response);
+
+                        // Reset form
+                        $('input[type="radio"]').prop('checked', false);
+                        $('#saran').val('');
+
+                        if (response.status && response.data.length > 0) {
+                            // Isi nilai score
+                            response.data.forEach(function(item) {
+                                const pertanyaanId = item.kepuasan_perawat_id;
+                                const score = item.score;
+
+                                $(`input[name="score[${pertanyaanId}]"][value="${score}"]`)
+                                    .prop('checked', true);
+                            });
+
+                            // Isi saran
+                            if (response.data[0].saran) {
+                                $('#saran').val(response.data[0].saran);
+                            }
+                        } else {
+                            Swal.fire({
+                                icon: 'info',
+                                title: 'Info',
+                                text: 'Belum ada data penilaian untuk perawat ini.',
+                                timer: 3000,
+                                timerProgressBar: true,
+                                showConfirmButton: false,
+                            });
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('AJAX Error:', error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Terjadi kesalahan saat memuat data.',
+                        });
+                    }
+                });
+            });
+
+
+
+
+
+        });
+    </script>
+@endpush

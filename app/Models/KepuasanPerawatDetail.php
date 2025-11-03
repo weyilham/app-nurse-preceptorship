@@ -13,4 +13,9 @@ class KepuasanPerawatDetail extends Model
     {
         return $this->belongsTo(KepuasanPerawat::class, 'kepuasan_perawat_id', 'id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

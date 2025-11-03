@@ -15,11 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('kepuasan_perawat_id');
             $table->unsignedBigInteger('user_id');
-            $table->integer('score1');
-            $table->integer('score2');
-            $table->integer('score3');
-            $table->integer('score4');
-            $table->integer('score5');
+            $table->integer('score');
             $table->string('saran')->nullable();
             $table->timestamps();
         });
